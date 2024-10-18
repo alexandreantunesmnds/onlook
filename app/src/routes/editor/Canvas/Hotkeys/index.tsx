@@ -1,5 +1,6 @@
 import { useEditorEngine } from '@/components/Context';
 import { EditorMode } from '@/lib/models';
+import { moveElement } from "electron/preload/webview/elements/move/index";
 import { ReactNode } from 'react';
 import { useHotkeys } from 'react-hotkeys-hook';
 import DeleteKey from './Delete';
@@ -44,6 +45,10 @@ const HotkeysArea = ({ children, scale, setScale }: HotkeysAreaProps) => {
     useHotkeys(Hotkey.PASTE.command, () => editorEngine.copy.paste());
     useHotkeys(Hotkey.CUT.command, () => editorEngine.copy.cut());
     useHotkeys(Hotkey.DUPLICATE.command, () => editorEngine.copy.duplicate());
+
+    useHotkeys(Hotkey.MOVE_UP.command, () => moveElement('.selected', -1));
+    useHotkeys(Hotkey.MOVE_DOWN.command, () => moveElement('.selected', 1));
+    
 
     return (
         <>

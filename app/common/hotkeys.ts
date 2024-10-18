@@ -26,6 +26,10 @@ export class Hotkey {
     static readonly BACKSPACE = new Hotkey('backspace', 'Delete Div');
     static readonly DELETE = new Hotkey('delete', 'Delete Div');
 
+    // Move
+    static readonly MOVE_UP = new Hotkey('shift+up', 'Move Element Up');
+    static readonly MOVE_DOWN = new Hotkey('shift+down', 'Move Element Down');
+
     // private to disallow creating other instances of this type
     private constructor(
         public readonly command: string,

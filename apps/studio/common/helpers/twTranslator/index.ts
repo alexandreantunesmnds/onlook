@@ -607,12 +607,17 @@ const propertyMap: Map<string, Record<string, string> | ((val: string) => string
     ],
     [
         'background-color',
-        (val) =>
-            ({
+        (val: string) => {
+            const colorClasses: { [key: string]: string } = {
                 transparent: 'bg-transparent',
                 currentColor: 'bg-current',
                 currentcolor: 'bg-current',
-            })[val] ?? (isColor(val, true) ? `bg-[${getCustomVal(val)}]` : ''),
+            };
+            if (val === '') {
+                return '';
+            }
+            return colorClasses[val] ?? (isColor(val, true) ? `bg-[${getCustomVal(val)}]` : '');
+        },
     ],
     ['background-image', (val) => ({ none: 'bg-none' })[val] ?? `bg-[${getCustomVal(val)}]`],
     [

@@ -43,8 +43,10 @@ export enum WebviewChannels {
     // To Webview
     WEBVIEW_ID = 'webview-id',
     UPDATE_STYLE = 'update-style',
+    REMOVE_STYLE = 'remove_style',
     INSERT_ELEMENT = 'insert-element',
     REMOVE_ELEMENT = 'remove-element',
+    REMOVE_CLASS = 'remove_class',
     MOVE_ELEMENT = 'move-element',
     EDIT_ELEMENT_TEXT = 'edit-element-text',
     CLEAN_AFTER_WRITE_TO_CODE = 'clean-after-write',

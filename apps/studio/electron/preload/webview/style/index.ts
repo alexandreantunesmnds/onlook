@@ -93,6 +93,20 @@ class CSSManager {
         this.stylesheet = ast;
     }
 
+    public removeStyle(domId: string, style: string) {
+        const element = document.getElementById(domId);
+        if (element) {
+            element.classList.remove(style);
+        }
+    }
+
+    public removeClass(domId: string, className: string) {
+        const element = document.getElementById(domId);
+        if (element) {
+            element.classList.remove(className);
+        }
+    }
+
     addRule(ast: CssNode, selector: string, property: string, value: string) {
         const newRule: Rule = {
             type: 'Rule',

@@ -29,7 +29,11 @@ export function getTailwindClassChangeFromStyle(
     styles: Record<string, string>,
 ): void {
     const newClasses = getCssClasses(request.oid, styles);
-    request.attributes['className'] = twMerge(request.attributes['className'] || '', newClasses);
+    const mergedClasses = twMerge(
+        request.attributes['className'] || '',
+        newClasses.join(' ').trim(),
+    );
+    request.attributes['className'] = mergedClasses.replace(/\bbg-\[#[^\]]+\]\b\s*/g, '').trim();
 }
 
 export function getCssClasses(oid: string, styles: Record<string, string>) {

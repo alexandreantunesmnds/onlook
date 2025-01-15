@@ -46,6 +46,24 @@ function listenForEditEvents() {
         publishStyleUpdate(domId);
     });
 
+    ipcRenderer.on(WebviewChannels.REMOVE_STYLE, (_, data) => {
+        const { domId, style } = data as {
+            domId: string;
+            style: string;
+        };
+        cssManager.removeStyle(domId, style);
+        publishStyleUpdate(domId);
+    });
+
+    ipcRenderer.on(WebviewChannels.REMOVE_CLASS, (_, data) => {
+        const { domId, className } = data as {
+            domId: string;
+            className: string;
+        };
+        cssManager.removeClass(domId, className);
+        publishStyleUpdate(domId);
+    });
+
     ipcRenderer.on(WebviewChannels.INSERT_ELEMENT, (_, data) => {
         const { element, location, editText } = data as {
             element: ActionElement;
